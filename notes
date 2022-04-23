@@ -1,0 +1,14 @@
+possible some kind of dense syntax for only specifying the logical structure of the available dialog tree. Also we could possibly express dialog flows / state machines as code..
+/*
+[open file] =>
+{
+	[fs_bookmarks] =>
+		{
+			for x in fs_bookmarks:
+				handler(x, handle_fs_bookmark)
+			while(wait_for_command(anyof([str(i) for i,x in enumerate(bookmarks)])))
+				picked(i)
+			
+		}
+}
+*/
