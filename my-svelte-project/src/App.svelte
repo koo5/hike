@@ -1,19 +1,28 @@
 <script>
-	import * from './stuff.js';
-
+	import {dialogs, new_dialog} from './stuff.js';
+  import Command from './Command.svelte'
+	import OpenFile from './OpenFile.svelte'
 
 </script>
 
-<Command syntax='open file' handler=()=>
-{
-	new_dialog({class: 'open file',})
-}/>
-
+<Command
+	syntax='open file'
+	handler={()=>{
+		new_dialog({class: 'open file',})
+	}}
+/>
+<div id='dialogs'>
 {#each $dialogs as d (d)}
-	{#if class == 'open file'}
-		<open_file {d}/>
+	dialog: {JSON.stringify(d)}
+	{#if d.class === 'open file'}
+		<OpenFile {d}/>
 	{/if}
 <br/>
 
 {/each}
-
+</div>
+<style>
+#dialogs {
+	background-color:#ffffff;
+}
+</style>
